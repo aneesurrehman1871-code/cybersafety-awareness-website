@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Cybersecurity Quiz</title>
+<style>
+.correct { color: green; font-weight: bold; }
+.wrong { color: red; }
+.result-box {
+    background-color: #f0f0f0;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 5px;
+    display: none;
+}
+</style>
+</head>
+<body>
+
+<h1>Cybersecurity Quiz for Students</h1>
+
+<nav>
+<a href="index.html">Home</a> |
+<a href="about.html">About Cybersecurity</a> |
+<a href="threats.html">Common Threats</a> |
+<a href="tips.html">Safety Tips</a> |
+<a href="quiz.html">Quiz</a>
+</nav>
+
+<hr>
+
+<p><b>Test your cybersecurity knowledge! Select the best answer for each question.</b></p>
+
+<form id="quizForm">
+
+<h3>Q1. What does cybersecurity protect?</h3>
+<input type="radio" name="q1" value="a"> Entertainment apps<br>
+<input type="radio" name="q1" value="b"> Computers, networks, and data from unauthorized access<br>
+<input type="radio" name="q1" value="c"> Only government systems<br>
+<input type="radio" name="q1" value="d"> Social media posts<br>
+
+<h3>Q2. What is phishing?</h3>
+<input type="radio" name="q2" value="a"> A type of antivirus software<br>
+<input type="radio" name="q2" value="b"> A fraudulent attempt to steal sensitive information<br>
+<input type="radio" name="q2" value="c"> A secure website protocol<br>
+<input type="radio" name="q2" value="d"> A password manager tool<br>
+
+<h3>Q3. Which of the following is a strong password?</h3>
+<input type="radio" name="q3" value="a"> password123<br>
+<input type="radio" name="q3" value="b"> Your date of birth<br>
+<input type="radio" name="q3" value="c"> P@ssw0rd!2024<br>
+<input type="radio" name="q3" value="d"> Your first name<br>
+
+<h3>Q4. Why is clicking on unknown links dangerous?</h3>
+<input type="radio" name="q4" value="a"> It slows down your internet<br>
+<input type="radio" name="q4" value="b"> It may lead to malware or phishing sites<br>
+<input type="radio" name="q4" value="c"> It increases data usage<br>
+<input type="radio" name="q4" value="d"> It's not dangerous at all<br>
+
+<h3>Q5. What is Two-Factor Authentication (2FA)?</h3>
+<input type="radio" name="q5" value="a"> Using two different passwords<br>
+<input type="radio" name="q5" value="b"> An extra security layer requiring a second form of verification<br>
+<input type="radio" name="q5" value="c"> A type of virus protection<br>
+<input type="radio" name="q5" value="d"> A social media feature<br>
+
+<h3>Q6. What should you check before entering sensitive information on a website?</h3>
+<input type="radio" name="q6" value="a"> The website has colorful design<br>
+<input type="radio" name="q6" value="b"> The URL starts with "https://" and has a padlock icon<br>
+<input type="radio" name="q6" value="c"> The website loads quickly<br>
+<input type="radio" name="q6" value="d"> It has many advertisements<br>
+
+<h3>Q7. What is malware?</h3>
+<input type="radio" name="q7" value="a"> Software that speeds up computers<br>
+<input type="radio" name="q7" value="b"> Malicious software designed to damage systems or steal data<br>
+<input type="radio" name="q7" value="c"> A type of email service<br>
+<input type="radio" name="q7" value="d"> A web browser extension<br>
+
+<h3>Q8. Which of these is a safe practice on social media?</h3>
+<input type="radio" name="q8" value="a"> Accepting all friend requests<br>
+<input type="radio" name="q8" value="b"> Sharing your phone number publicly<br>
+<input type="radio" name="q8" value="c"> Setting your profile to private and limiting personal information<br>
+<input type="radio" name="q8" value="d"> Using the same password for all accounts<br>
+
+<h3>Q9. What should you do if you receive a suspicious email asking for your password?</h3>
+<input type="radio" name="q9" value="a"> Reply with your password immediately<br>
+<input type="radio" name="q9" value="b"> Click the link to verify<br>
+<input type="radio" name="q9" value="c"> Delete it and report it as phishing<br>
+<input type="radio" name="q9" value="d"> Forward it to all your contacts<br>
+
+<h3>Q10. Why is public Wi-Fi risky?</h3>
+<input type="radio" name="q10" value="a"> It's slower than mobile data<br>
+<input type="radio" name="q10" value="b"> Hackers can intercept your data on unsecured networks<br>
+<input type="radio" name="q10" value="c"> It costs money<br>
+<input type="radio" name="q10" value="d"> It only works on laptops<br>
+
+<br>
+<button type="button" onclick="checkAnswers()">Submit Quiz</button>
+<button type="button" onclick="resetQuiz()">Reset</button>
+
+</form>
+
+<div class="result-box" id="resultBox">
+<h2>Quiz Results</h2>
+<p id="scoreText"></p>
+<p id="feedback"></p>
+</div>
+
+<hr>
+
+<div id="answerKey" style="display:none;">
+<h3>Answer Key</h3>
+<p><b>Q1:</b> B - Computers, networks, and data from unauthorized access</p>
+<p><b>Q2:</b> B - A fraudulent attempt to steal sensitive information</p>
+<p><b>Q3:</b> C - P@ssw0rd!2024</p>
+<p><b>Q4:</b> B - It may lead to malware or phishing sites</p>
+<p><b>Q5:</b> B - An extra security layer requiring a second form of verification</p>
+<p><b>Q6:</b> B - The URL starts with "https://" and has a padlock icon</p>
+<p><b>Q7:</b> B - Malicious software designed to damage systems or steal data</p>
+<p><b>Q8:</b> C - Setting your profile to private and limiting personal information</p>
+<p><b>Q9:</b> C - Delete it and report it as phishing</p>
+<p><b>Q10:</b> B - Hackers can intercept your data on unsecured networks</p>
+</div>
+
+<script>
+// Correct answers
+const correctAnswers = {
+    q1: 'b',
+    q2: 'b',
+    q3: 'c',
+    q4: 'b',
+    q5: 'b',
+    q6: 'b',
+    q7: 'b',
+    q8: 'c',
+    q9: 'c',
+    q10: 'b'
+};
+
+function checkAnswers() {
+    let score = 0;
+    let totalQuestions = 10;
+    let unanswered = 0;
+
+    // Check each answer
+    for (let i = 1; i <= totalQuestions; i++) {
+        const question = 'q' + i;
+        const userAnswer = document.querySelector('input[name="' + question + '"]:checked');
+        
+        if (!userAnswer) {
+            unanswered++;
+        } else if (userAnswer.value === correctAnswers[question]) {
+            score++;
+        }
+    }
+
+    // Check if all questions are answered
+    if (unanswered > 0) {
+        alert('Please answer all questions before submitting!');
+        return;
+    }
+
+    // Calculate percentage
+    const percentage = (score / totalQuestions) * 100;
+
+    // Display result
+    const resultBox = document.getElementById('resultBox');
+    const scoreText = document.getElementById('scoreText');
+    const feedback = document.getElementById('feedback');
+
+    scoreText.innerHTML = '<span class="correct">You scored ' + score + ' out of ' + totalQuestions + '</span> (' + percentage.toFixed(0) + '%)';
+
+    // Feedback based on score
+    if (score === 10) {
+        feedback.innerHTML = '<span class="correct">🎉 Excellent! Perfect score! You have great cybersecurity knowledge.</span>';
+    } else if (score >= 8) {
+        feedback.innerHTML = '<span class="correct">✅ Great job! You have strong cybersecurity awareness.</span>';
+    } else if (score >= 6) {
+        feedback.innerHTML = '👍 Good effort! Review the safety tips to improve your knowledge.';
+    } else if (score >= 4) {
+        feedback.innerHTML = '<span class="wrong">⚠️ You need more practice. Please review the content and try again.</span>';
+    } else {
+        feedback.innerHTML = '<span class="wrong">❌ Please study the material carefully and retake the quiz.</span>';
+    }
+
+    resultBox.style.display = 'block';
+    document.getElementById('answerKey').style.display = 'block';
+
+    // Scroll to results
+    resultBox.scrollIntoView({ behavior: 'smooth' });
+}
+
+function resetQuiz() {
+    document.getElementById('quizForm').reset();
+    document.getElementById('resultBox').style.display = 'none';
+    document.getElementById('answerKey').style.display = 'none';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+
+<p><i>Note: This quiz is for educational purposes only. No data is collected or stored.</i></p>
+
+</body>
+</html>
